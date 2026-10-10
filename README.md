@@ -1,11 +1,9 @@
 # Regularized Emphatic Temporal-Difference Learning (RETD)
 
-Numerical code accompanying the manuscript **Regularized Emphatic
-Temporal-Difference Learning**. This release is derived from the August 2026
-submission sources, not from subsequent theoretical extensions.
+Numerical code accompanying **Regularized Emphatic Temporal-Difference
+Learning**.
 
-**Plotting code and figure files are intentionally excluded.** The manuscript,
-editorial correspondence, and later theory drafts are also not included.
+Plotting code and figure files are not included.
 
 ## Scope
 
@@ -15,33 +13,27 @@ editorial correspondence, and later theory drafts are also not included.
 | `reproducibility/` | Diminishing-step fixed-point recovery (Q3), additional prediction tasks (Q4), and their shared numerical implementation and frozen protocol. |
 | `verification/` | Exact two-state and Baird RETD certificate checkers and the fixed Baird certificate candidate. |
 
-See each directory's README for runnable commands, configuration details, and
-the changes made while separating numerical code from plotting code.
+See each directory's README for execution commands, configurations, and outputs.
 
-This is **not a one-command reproduction of every paper figure**. In particular,
-the Q2 parameter-grid/phase-map pipeline and historical large trajectory archives
-are not included. The Q1 release provides a numerical runner rather than the
-historical plotting/archive-reuse entry points. Numerical results and figures
-from the original submission have not been uploaded as newly rerun results.
+The Q2 parameter-grid/phase-map pipeline and large trajectory archives are not
+included.
 
-## Algorithm identity
+## RETD implementation
 
-Each RETD recursion uses the original **single-c RETD** convention: `c` is excess
-leakage, so the auxiliary update contains the factor `1 + c`. The original Q3
+Each RETD recursion uses the **single-c RETD** convention: `c` is excess
+leakage, so the auxiliary update contains the factor `1 + c`. The Q3
 fixed-point recovery experiment also runs copies at two regularization values
-and combines their readouts. Those original recovery routines are included;
-later post-submission algorithm or theory modifications are not. The RETD
+and combines their readouts. The RETD
 emphatic follow-on trace is not clipped or replaced. Consult the source and
 frozen protocol for update order, initialization, step-size schedules,
 environment definitions, and readout conventions.
 
-The certificate programs verify particular mathematical certificates. Passing
-those checks does not establish an unrestricted finite-variance or prediction-risk
-guarantee for arbitrary off-policy tasks.
+The exact certificate verifiers check the two-state and Baird configurations
+documented in `verification/README.md`.
 
 ## Environment
 
-The release checks use Python 3.12.10, NumPy 2.3.1, and SymPy 1.14.0. Install the
+Tested with Python 3.12.10, NumPy 2.3.1, and SymPy 1.14.0. Install the
 pinned numerical dependencies into an isolated environment:
 
 ```bash
@@ -52,24 +44,11 @@ python -m pip install -r requirements.txt
 
 No plotting library is required. SymPy is used by the exact Baird verifier.
 
-## Reproducibility and limitations
+## Reproducibility
 
-- The full experiment defaults and frozen configurations preserve the original
-  source settings; full runs can be expensive.
-- Short smoke runs check software execution only. They are not paper-scale
-  replications, independent empirical validation, or new scientific results.
-- The numerical algorithms retained from the original source are compared at
-  the Python abstract-syntax-tree level; `provenance.json` files identify source
-  hashes, retained functions, and permitted packaging/metadata changes.
+- Experiment settings, seeds, and output definitions are documented in each
+  directory. Full runs can be expensive.
+- Smoke checks use reduced run counts and horizons to verify execution; use
+  the full-run commands for the paper's experimental settings.
+- `provenance.json` files record source hashes and verification results.
 - New numerical output is written locally and is excluded from version control.
-- No license has been selected for this repository; no additional reuse license
-  is granted by this release.
-
-## Provenance
-
-Source packages: `jmlr_submission_revised_20260826` and
-`jmlr_submission_theory_revised_20260828`. The latter's eleven result artifacts
-match the corresponding artifacts in the August 29 submission by SHA-256.
-That check establishes artifact correspondence, not a fresh experimental rerun.
-
-Release date: 2026-10-10.

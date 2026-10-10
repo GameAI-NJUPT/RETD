@@ -1,9 +1,8 @@
 # Exact certificate verification
 
-This directory contains two deterministic verifiers from the manuscript's
-pre-submission August 2026 source. They are not training programs, Monte Carlo
-experiments, or general-purpose RETD stability tests. No plotting code or
-plotting dependency is included.
+This directory contains deterministic exact-arithmetic verifiers for the
+two-state and Baird certificates. No plotting code or plotting dependency is
+required.
 
 ## Requirements
 
