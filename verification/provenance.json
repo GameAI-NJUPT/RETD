@@ -1,0 +1,122 @@
+{
+  "schema_version": 1,
+  "release_date": "2026-10-10",
+  "scope": "Deterministic exact-arithmetic certificate rechecks for the two fixed manuscript models; not training, Monte Carlo simulation, reward-noise prediction-risk analysis, or a general RETD guarantee.",
+  "upstream_root": "jmlr_submission_theory_revised_20260828/reproducibility",
+  "release_subdirectory": "verification",
+  "upstream_files_modified": false,
+  "historical_output_archives_copied": false,
+  "plotting_code_or_dependencies_included": false,
+  "runtime": {
+    "python_version": "3.12.10",
+    "python_build": "tags/v3.12.10:0cc8128, Apr 8 2025, 12:21:36; MSC v.1943 64 bit (AMD64)",
+    "python_executable": "python",
+    "sympy_version": "1.14.0",
+    "dependency_installation_performed": false
+  },
+  "files": [
+    {
+      "source_relative_path": "experiments/verify_two_state_p3over10_c4_exact_20260823.py",
+      "release_relative_path": "verify_two_state_p3over10_c4_exact_20260823.py",
+      "source_sha256": "f444046aa49fabcc69244d92d82eace388aee8ab9590708a37fed581fd84efb5",
+      "release_sha256": "a5db52d01ce38243be1abe0c36ded8bac5d9d6a10aa7b4d98d1e6ceb1403db80",
+      "changes": [
+        "PACKAGE_ROOT changed from Path(__file__).resolve().parents[2] to Path(__file__).resolve().parent.",
+        "DEFAULT_OUTPUT changed from PACKAGE_ROOT/reproducibility/results/two_state_p3over10_c4_exact_recheck.json to PACKAGE_ROOT/outputs/two_state_p3over10_c4_exact_recheck.json."
+      ],
+      "all_function_asts_identical": true,
+      "function_count_including_main": 20,
+      "module_ast_identical_excluding_assignments": ["PACKAGE_ROOT", "DEFAULT_OUTPUT"],
+      "aggregate_function_ast_sha256": "802f572d2ec8177d280037ee9442f36bafa046963abba236d375e78a2695ba9c"
+    },
+    {
+      "source_relative_path": "experiments/verify_baird_retd_certificate.py",
+      "release_relative_path": "verify_baird_retd_certificate.py",
+      "source_sha256": "68184f855cb2c8d741bac187527016ccac257a44c0c75cf056a8aa03b0a6cda1",
+      "release_sha256": "a4d9056c8749572c1db0adf5e8e3ba866fe89987030976c2b081b083dad79ae0",
+      "changes": [
+        "DEFAULT_CANDIDATE changed from HERE.parent/certificates to HERE/certificates; the candidate filename is unchanged.",
+        "DEFAULT_OUTPUT changed from HERE.parent/results to HERE/outputs; the output filename is unchanged."
+      ],
+      "all_function_asts_identical": true,
+      "function_count_including_main": 13,
+      "module_ast_identical_excluding_assignments": ["DEFAULT_CANDIDATE", "DEFAULT_OUTPUT"],
+      "aggregate_function_ast_sha256": "33d7e2bb3dc3f13a347357194643c86cbebfbc8b1d5390fb0d64a6617ff86991"
+    },
+    {
+      "source_relative_path": "certificates/baird_retd_alpha_0p01_c_0p5_candidate_20260810.json",
+      "release_relative_path": "certificates/baird_retd_alpha_0p01_c_0p5_candidate_20260810.json",
+      "source_sha256": "059bc64889f078f14cd07d2c9590a98fe4f6f0b372073162d622b4207d3bf005",
+      "release_sha256": "8b0004fb8cb3f5ac4788e025d7024e4c5c805b0cba4fa09242b78413191f2bee",
+      "byte_identical": false,
+      "changes": [
+        "Only fit_script provenance metadata was normalized from a historical local absolute path to the upstream package-relative source identifier jmlr_submission/reproducibility/experiments/freeze_baird_retd_certificate.py. This is not a bundled runtime dependency."
+      ],
+      "json_deep_equality_excluding_keys": ["fit_script"],
+      "json_key_sets_identical": true,
+      "json_deep_equality_verified": true,
+      "mathematical_candidate_unchanged": true
+    }
+  ],
+  "ast_audit": {
+    "parser": "Python ast.parse, UTF-8-SIG input",
+    "comparison": "ast.dump(include_attributes=False) equality for every top-level function, including main; complete module AST equality after excluding only the named path-constant assignments",
+    "aggregate_digest_definition": "SHA-256 of UTF-8 json.dumps(mapping_from_function_name_to_ast_dump, sort_keys=True), using default JSON separators",
+    "passed": true
+  },
+  "fresh_verification_runs": [
+    {
+      "working_directory": "verification",
+      "command": "python verify_two_state_p3over10_c4_exact_20260823.py --output outputs/two_state_release_check_20261010.json",
+      "started_utc": "2026-10-10T02:37:38.4209384Z",
+      "finished_utc": "2026-10-10T02:37:38.9318182Z",
+      "elapsed_seconds": 0.5046962,
+      "exit_code": 0,
+      "status": "PASS",
+      "check_count": 13,
+      "all_checks_true": true,
+      "etd_cycle_log_prefix_lower_decimal": 0.004295228922459683,
+      "retd_expected_cycle_log_norm_upper_decimal": -0.0010016772775798414,
+      "retd_physical_time_lyapunov_upper_decimal": -0.0007011740943058889,
+      "output_relative_path": "outputs/two_state_release_check_20261010.json",
+      "output_sha256": "59d2bc24c4bdbf03872d0d61b87edd63573da02a52aef070efcdb094ffdbc7ba",
+      "output_size_bytes": 17847,
+      "output_in_source_release": false,
+      "historical_metadata_note": "The unchanged upstream output schema includes date=2026-08-23 and two hard-coded numerical_full_* estimates. Those estimates were not recomputed. Fresh execution times and exact-check results are recorded here."
+    },
+    {
+      "working_directory": "verification",
+      "command": "python verify_baird_retd_certificate.py --output outputs/baird_release_check_sanitized_20261010.json",
+      "started_utc": "2026-10-10T02:41:11.6559218Z",
+      "finished_utc": "2026-10-10T02:41:22.0383555Z",
+      "elapsed_seconds": 10.3660353,
+      "exit_code": 0,
+      "status": "certified",
+      "claim": "RETD top physical-time Lyapunov exponent <= -1/10000 for the supplied fixed Baird model",
+      "finite_projective_drift_upper_decimal": "-0.000211197432303078308",
+      "tail_projective_drift_upper_decimal": "1.04142204840942604e-08",
+      "final_certificate_upper_decimal": "-9.4520351415927536e-05",
+      "final_upper_is_drift_plus_tail_plus_claimed_margin_times_expected_cycle_length": true,
+      "candidate_sha256": "8b0004fb8cb3f5ac4788e025d7024e4c5c805b0cba4fa09242b78413191f2bee",
+      "output_relative_path": "outputs/baird_release_check_sanitized_20261010.json",
+      "output_sha256": "7f85c43ce871c1158b941f5a409bade9bb307211f7a45482d8917ac5dff17707",
+      "output_size_bytes": 12822,
+      "output_in_source_release": false,
+      "supersedes_local_output": "outputs/baird_release_check_20261010.json",
+      "superseded_output_preserved_and_ignored": true
+    }
+  ],
+  "source_release_files": [
+    ".gitignore",
+    "README.md",
+    "provenance.json",
+    "verify_two_state_p3over10_c4_exact_20260823.py",
+    "verify_baird_retd_certificate.py",
+    "certificates/baird_retd_alpha_0p01_c_0p5_candidate_20260810.json"
+  ],
+  "limitations": [
+    "The verifiers confirm the fixed certificates and do not prove arbitrary candidate or environment claims.",
+    "No probability simulation, learning experiment, plotting, Git operation, or upload was performed for this verification subpackage.",
+    "outputs/ is ignored locally; the source release records compact fresh-run summaries without bundling generated reports."
+  ]
+}

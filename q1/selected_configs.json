@@ -1,0 +1,56 @@
+{
+  "baird_seven_state:ETD": {
+    "alpha": 1e-05
+  },
+  "baird_seven_state:GTD": {
+    "alpha": 0.003,
+    "aux_alpha": 0.003
+  },
+  "baird_seven_state:GTD2": {
+    "alpha": 0.001,
+    "aux_alpha": 0.0001
+  },
+  "baird_seven_state:RETD": {
+    "alpha": 0.03,
+    "c": 0.5
+  },
+  "baird_seven_state:TDC": {
+    "alpha": 0.003,
+    "aux_alpha": 0.03
+  },
+  "baird_seven_state:TDRC": {
+    "alpha": 0.03,
+    "regularizer": 10.0
+  },
+  "baird_seven_state:TETD": {
+    "alpha": 0.001,
+    "depth": 4
+  },
+  "new_two_state:ETD": {
+    "alpha": 0.018738174228603847
+  },
+  "new_two_state:GTD": {
+    "alpha": 0.03,
+    "aux_alpha": 0.03
+  },
+  "new_two_state:GTD2": {
+    "alpha": 0.03,
+    "aux_alpha": 0.003
+  },
+  "new_two_state:RETD": {
+    "alpha": 0.03,
+    "c": 0.5
+  },
+  "new_two_state:TDC": {
+    "alpha": 0.03,
+    "aux_alpha": 0.03
+  },
+  "new_two_state:TDRC": {
+    "alpha": 0.03,
+    "regularizer": 0.1
+  },
+  "new_two_state:TETD": {
+    "alpha": 0.03,
+    "depth": 4
+  }
+}

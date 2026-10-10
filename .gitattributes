@@ -1,0 +1,2 @@
+# Preserve exact published bytes so provenance SHA-256 values survive checkout.
+* -text

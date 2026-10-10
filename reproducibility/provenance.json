@@ -1,0 +1,201 @@
+{
+  "audit_command_template": "python -B validate_numerics.py --source-root <UPSTREAM_REPRODUCIBILITY> --output validation/final_20261010",
+  "audit_driver_location": "Internal audit only; not included in the public numerical source",
+  "audit_driver_sha256": "bc816011a09ace8efa768279fb12d43323abba53d23148427e84250371befb50",
+  "internal_audit_artifacts_not_published": true,
+  "command_context": "These are the actual maintainer checks using internal audit output locations. Public runnable commands are documented in README.md; no internal audit file is required by the released numerical code.",
+  "commands": [
+    {
+      "command": "python -B run_diminishing_recovery_20260826.py --output ../../20261010_RETD_CodeRelease_Audit/reproducibility_validation/validation/final_20261010/q3 --runs 16 --steps 400",
+      "exit_code": 0,
+      "stderr_empty": true
+    },
+    {
+      "command": "python -B smoke_numerics.py --output ../../20261010_RETD_CodeRelease_Audit/reproducibility_validation/validation/final_20261010/public_smoke",
+      "exit_code": 0,
+      "stderr_empty": true
+    },
+    {
+      "command": "python -B formal_suite.py --mode smoke --protocol ../../20261010_RETD_CodeRelease_Audit/reproducibility_validation/validation/final_20261010/q4/smoke_protocol.json --output-root ../../20261010_RETD_CodeRelease_Audit/reproducibility_validation/validation/final_20261010 --run-id formal_smoke",
+      "exit_code": 0,
+      "stderr_empty": true
+    }
+  ],
+  "created_utc": "2026-10-10T02:42:38.889495+00:00",
+  "default_experimental_parameters_changed": false,
+  "formal_defaults": {
+    "legacy_formal_suite_test_seed_count": 30,
+    "q3_runs": 10000,
+    "q3_steps": 20000,
+    "q4_boyan_steps": 5000,
+    "q4_random_walk_steps": 10000,
+    "q4_test_seed_count": 10000,
+    "q4_validation_seed_count": 10
+  },
+  "formal_runs_executed": false,
+  "formal_suite_smoke": {
+    "algorithm_count": 10,
+    "candidate_limit": 2,
+    "environment_count": 4,
+    "note": "Legacy smoke mode; neither this smoke nor the legacy 30-seed full mode substitutes for Q3/Q4 10000-run experiments.",
+    "steps": 100,
+    "test_seed_count": 2,
+    "validation_seed_count": 2
+  },
+  "numpy": "2.3.1",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "public_smoke_helper": {
+    "file": "smoke_numerics.py",
+    "formal_reproduction": false,
+    "source_sha256": "cb7e0f2f4498ab0dadd23115e3af43eadbe531179bfd08195ff58f8ec9415555",
+    "actual_execution_exit_code": 0,
+    "actual_execution_stderr_empty": true,
+    "status": "passed"
+  },
+  "python": "3.12.10",
+  "q3_smoke": {
+    "all_summary_statistics_finite": true,
+    "invalid_denominators": 0,
+    "runs": 16,
+    "steps": 400
+  },
+  "q4_smoke": {
+    "environment_count": 4,
+    "finite_recorded_metrics": true,
+    "methods": [
+      "GTD2",
+      "TDC",
+      "TDRC",
+      "ETD",
+      "TETD(4)",
+      "RETD"
+    ],
+    "note": "In-memory reduced software check; the formal source and frozen protocol remain unchanged. Metrics retain the upstream divergence clipping policy.",
+    "per_seed_rows": 384,
+    "steps": 100,
+    "test_seed_count": 16,
+    "validation_rows": 576,
+    "validation_seed_count": 10
+  },
+  "release_edits": [
+    "Q3: remove the visualization-only function, dependency imports, switch, call, and artifact metadata",
+    "Q3/Q4/formal_suite: make receipt file identifiers portable; no numerical changes",
+    "Q4/formal_suite: use the adjacent frozen protocol and local results directory"
+  ],
+  "schema_version": 1,
+  "source_equivalence": [
+    {
+      "entire_module_ast_identical_after_explicit_release_edits": true,
+      "file": "run_diminishing_recovery_20260826.py",
+      "normalized_module_ast_sha256": "565ffda4f7852dcec7da7138aa11e51e5f0d58b358346262a67859426dce0993",
+      "release_sha256": "b7d1d1e32c69f912ff259e1f6523d6f4c042fb966912b52e56fa2aa367a5248d",
+      "removed_non_numerical_function_count": 1,
+      "reviewed_wrapper_exceptions": [
+        "main",
+        "run_experiment"
+      ],
+      "source_sha256": "f38aa787b0543d04144fc9a34e1b97bf2eaf1b46f0bdf353624be8df1a06d2ae",
+      "unchanged_function_and_class_ast": [
+        "sha256",
+        "write_json",
+        "summarize",
+        "prediction_error"
+      ],
+      "upstream_identifier": "jmlr_submission_theory_revised_20260828/reproducibility/run_diminishing_recovery_20260826.py"
+    },
+    {
+      "entire_module_ast_identical_after_explicit_release_edits": true,
+      "file": "run_additional_tasks_10000.py",
+      "normalized_module_ast_sha256": "01c28081d4ff8146cb658501465124513179558230208e158dd149731f278f4f",
+      "release_sha256": "bbeaedec42aedab7d3a4f07d4b76267dd658ca57139a369d644f25eb428ea02e",
+      "removed_non_numerical_function_count": 0,
+      "reviewed_wrapper_exceptions": [
+        "main"
+      ],
+      "source_sha256": "1e116a752f11d6fa3159da1c2885081acfd16aa85fda36a33510c5fce105d28b",
+      "unchanged_function_and_class_ast": [
+        "MethodState",
+        "sha256",
+        "write_json",
+        "write_csv",
+        "u01",
+        "environments",
+        "initial_states",
+        "transition",
+        "path_arrays",
+        "config_candidates",
+        "output_error",
+        "truncated_followon",
+        "simulate_validation_method",
+        "initialize_method_state",
+        "test_environment"
+      ],
+      "upstream_identifier": "jmlr_submission_theory_revised_20260828/reproducibility/run_additional_tasks_10000.py"
+    },
+    {
+      "entire_module_ast_identical_after_explicit_release_edits": true,
+      "file": "formal_suite.py",
+      "normalized_module_ast_sha256": "14da36db0da8440a1b573b9b2a5a54ab38cba0530c8d7cdde5aa8c8077f89118",
+      "release_sha256": "8114fbca8c296dafa9cf89d30252cbcfdfd193617d760e21ac538d1a61ef40b0",
+      "removed_non_numerical_function_count": 0,
+      "reviewed_wrapper_exceptions": [
+        "parse_args",
+        "run"
+      ],
+      "source_sha256": "f7ab9a7c86f2b6c77a3fe28c318b418a5e920c0a1ee9efda49d85f2a481a7afe",
+      "unchanged_function_and_class_ast": [
+        "Environment",
+        "Coordinates",
+        "Trajectory",
+        "RunResult",
+        "load_protocol",
+        "sha256_file",
+        "sha256_arrays",
+        "json_ready",
+        "write_json",
+        "write_csv",
+        "stationary_distribution",
+        "analysis_coordinates",
+        "baird_environment",
+        "prediction_two_state_environment",
+        "boyan_environment",
+        "random_walk_environment",
+        "build_environments",
+        "generate_trajectory",
+        "target_values",
+        "config_id",
+        "algorithm_configs",
+        "truncated_followon",
+        "run_algorithm",
+        "validation_score",
+        "select_configuration",
+        "robust_summary",
+        "paired_bootstrap_interval",
+        "save_trajectory",
+        "environment_receipt",
+        "run_validation",
+        "run_test",
+        "two_c_configs",
+        "two_c_readout",
+        "run_two_c",
+        "write_manifest"
+      ],
+      "upstream_identifier": "jmlr_submission_theory_revised_20260828/reproducibility/formal_suite.py"
+    },
+    {
+      "byte_identical": true,
+      "file": "frozen_protocol_20260810.json",
+      "release_sha256": "d8b58eaa9450eff5d2dde0a63941b3ec3e7d7c270193246e242f6fef86a4da73",
+      "source_sha256": "d8b58eaa9450eff5d2dde0a63941b3ec3e7d7c270193246e242f6fef86a4da73",
+      "upstream_identifier": "jmlr_submission_theory_revised_20260828/reproducibility/frozen_protocol_20260810.json"
+    }
+  ],
+  "status": "software_checks_only_not_formal_reproduction",
+  "syntax_checked": [
+    "formal_suite.py",
+    "run_additional_tasks_10000.py",
+    "run_diminishing_recovery_20260826.py",
+    "smoke_numerics.py"
+  ],
+  "validation_artifacts": "Internal audit: reproducibility_validation/validation/final_20261010"
+}

@@ -1,0 +1,197 @@
+{
+  "schema_version": 1,
+  "status": "frozen_before_formal_rerun",
+  "frozen_date": "2026-08-10",
+  "scientific_scope": "finite linear off-policy prediction with ETD(0), unit interest, and the RETD (1+c) leakage convention",
+  "retd_update": {
+    "theta": "theta <- theta + alpha * (F * rho * delta - omega) * phi",
+    "omega": "omega <- omega + alpha * (F * rho * delta - (1+c) * omega)",
+    "followon": "F_next <- 1 + gamma * rho * F",
+    "c_semantics": "c is excess leakage; the total omega coefficient is 1+c"
+  },
+  "randomness": {
+    "validation_seeds": [
+      2026081000,
+      2026081001,
+      2026081002,
+      2026081003,
+      2026081004,
+      2026081005,
+      2026081006,
+      2026081007,
+      2026081008,
+      2026081009
+    ],
+    "test_seeds": [
+      2026081100,
+      2026081101,
+      2026081102,
+      2026081103,
+      2026081104,
+      2026081105,
+      2026081106,
+      2026081107,
+      2026081108,
+      2026081109,
+      2026081110,
+      2026081111,
+      2026081112,
+      2026081113,
+      2026081114,
+      2026081115,
+      2026081116,
+      2026081117,
+      2026081118,
+      2026081119,
+      2026081120,
+      2026081121,
+      2026081122,
+      2026081123,
+      2026081124,
+      2026081125,
+      2026081126,
+      2026081127,
+      2026081128,
+      2026081129
+    ],
+    "common_random_numbers": true,
+    "rule": "For a fixed environment and seed, every algorithm consumes the same pre-generated state, next-state, reward, importance-ratio trajectory."
+  },
+  "evaluation": {
+    "tail_fraction": 0.2,
+    "curve_stride": 10,
+    "primary_metric": "root mean squared value error over declared evaluation states",
+    "aligned_metric": "root mean squared error to the analytic ETD fixed-point prediction; RETD uses the exact single-c recovered coordinate",
+    "main_divergence_threshold": 1000.0,
+    "nonfinite_is_divergence": true,
+    "divergence_threshold_sensitivity": [100.0, 1000.0, 10000.0, 1000000.0],
+    "right_censor_at_horizon": true,
+    "validation_score": "median(log10(max(tail_primary_rmsve,1e-12))) + 5 * divergence_fraction",
+    "tie_break": "lower divergence fraction, then lower median tail RMSVE, then lower alpha, then lexical config id",
+    "reported_statistics": [
+      "mean",
+      "sample_standard_deviation",
+      "median",
+      "interquartile_range",
+      "quantiles_10_25_50_75_90",
+      "paired_bootstrap_95_percent_interval",
+      "seed_level_values",
+      "time_to_divergence_survival"
+    ]
+  },
+  "environments": {
+    "baird_seven_state": {
+      "steps": 5000,
+      "gamma": 0.99,
+      "evaluation_states": "all seven states",
+      "initial_theta": "ones(8) with coordinate 7 (zero based 6) set to 10",
+      "reward": "identically zero"
+    },
+    "prediction_two_state": {
+      "steps": 5000,
+      "gamma": 0.9,
+      "evaluation_states": "both states",
+      "initial_theta": "ones(1)",
+      "reward": "one exactly on state 1 with target action/right transition; zero otherwise"
+    },
+    "boyan_chain": {
+      "steps": 5000,
+      "gamma": 0.9,
+      "evaluation_states": "all thirteen states",
+      "initial_theta": "ones(4)",
+      "reward": "transition reward 1 or 2 from states 2..12 and 1.5 from states 0 and 1"
+    },
+    "off_policy_random_walk": {
+      "steps": 10000,
+      "gamma": 0.9,
+      "evaluation_states": "five nonterminal states",
+      "initial_theta": "zeros(3)",
+      "reward": "one on entry to the right terminal and zero otherwise",
+      "episode_boundary": "reset state to the center and reset F to one after a terminal transition"
+    }
+  },
+  "algorithms": [
+    "TD",
+    "GTD2",
+    "TDC",
+    "TDRC",
+    "ETD",
+    "TETD(4)",
+    "TETD(6)",
+    "TETD(8)",
+    "TETD(10)",
+    "RETD"
+  ],
+  "tuning": {
+    "candidate_budget_per_algorithm_environment": 24,
+    "single_stepsize_grid": [
+      0.00001,
+      0.0000145,
+      0.000021,
+      0.0000305,
+      0.0000442,
+      0.0000641,
+      0.0000929,
+      0.0001347,
+      0.0001953,
+      0.000283,
+      0.0004102,
+      0.0005947,
+      0.000862,
+      0.001249,
+      0.00181,
+      0.002624,
+      0.003804,
+      0.005515,
+      0.007997,
+      0.011594,
+      0.016812,
+      0.024376,
+      0.035348,
+      0.05125
+    ],
+    "two_stepsize_main_grid": [0.0001, 0.0003, 0.001, 0.003, 0.01, 0.03],
+    "auxiliary_to_main_ratios": [0.25, 1.0, 4.0, 16.0],
+    "tdrc_regularizers": [0.01, 0.1, 1.0, 10.0],
+    "retd_c_values": [0.1, 0.5, 2.0, 8.0],
+    "tetd_depths": [4, 6, 8, 10]
+  },
+  "two_c_recovery": {
+    "environments": ["prediction_two_state", "boyan_chain"],
+    "candidate_budget": 24,
+    "alpha_grid": [0.0001, 0.0003, 0.001, 0.003, 0.01, 0.03],
+    "c_pairs": [[0.1, 2.0], [0.5, 2.0], [0.5, 8.0], [2.0, 8.0]],
+    "tail_fraction": 0.2,
+    "absolute_denominator_threshold": 0.000001,
+    "threshold_sensitivity": [1e-8, 1e-7, 0.000001, 0.00001, 0.0001, 0.001],
+    "invalid_readouts_remain_in_denominator": true,
+    "model_based_recovery_is_audit_only": true
+  },
+  "lyapunov_sanity": {
+    "baird_alphas": [0.001, 0.01],
+    "retd_c": 0.5,
+    "seeds": [
+      2026081200,
+      2026081201,
+      2026081202,
+      2026081203,
+      2026081204,
+      2026081205,
+      2026081206,
+      2026081207,
+      2026081208,
+      2026081209
+    ],
+    "horizons": [50000, 100000, 200000, 500000, 1000000],
+    "burnin": 10000,
+    "estimators": ["stepwise_normalization", "regenerative_cycle"],
+    "initial_directions": ["canonical_basis", "seeded_random_sphere", "numerically_worst_candidate"]
+  },
+  "certificate_targets": {
+    "baird_alphas": [0.001, 0.01],
+    "retd_c": 0.5,
+    "required_signs": ["ETD_positive", "RETD_negative"],
+    "required_scope": "prediction-identifiable ETD row space and RETD row-space-plus-omega joint space",
+    "numerical_estimates_are_not_certificates": true
+  }
+}

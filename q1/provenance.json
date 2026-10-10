@@ -1,0 +1,197 @@
+{
+  "schema": "retd-q1-numerical-extraction-v1",
+  "scope": "Pure-numerical Q1 locked protocols; no figures, plotting code, historical arrays, or full formal rerun",
+  "source_tree_label": "jmlr_submission_revised_20260826",
+  "sources": [
+    {
+      "path": "experiments/run_two_environment_suite_20260825.py",
+      "sha256": "c2174c9b980159285b4c1e0c01cf32a49ac475026758caa9395edf53297cad6c"
+    },
+    {
+      "path": "experiments/run_finite_time_lyapunov_figures_20260825.py",
+      "sha256": "163a640233268a797740401fd1d5312d7e592fb7fd0b4df8663db7f5c942d67f"
+    },
+    {
+      "path": "experiments/run_new_two_state_counterexample_locked_figure4_20260825.py",
+      "sha256": "8d33724223c8a93d4917a4e36f7874efce8be432a42564f584a3df63942b7b84"
+    },
+    {
+      "path": "experiments/run_baird_counterexample_locked_figure5_10000runs_20260825.py",
+      "sha256": "e9018205219aebdd487d4d9b45770cb6aa5d830e57a737088efe2d3a6541643b"
+    },
+    {
+      "path": "results/two_environment_suite_20260825/selected_configs.json",
+      "sha256": "6a077edb4222112828dfcd868eaa45f9fb68f55e4c7c200c40afad94403aadd5"
+    }
+  ],
+  "preserved_ast_nodes": [
+    {
+      "source": "experiments/run_two_environment_suite_20260825.py",
+      "release": "numerical_core.py",
+      "name": "Environment",
+      "sha256": "dad8b9b386e42ad09ba03eaff8b3c3806e010e0d1eb718daa2e8ae465cb93eb1"
+    },
+    {
+      "source": "experiments/run_two_environment_suite_20260825.py",
+      "release": "numerical_core.py",
+      "name": "Trajectory",
+      "sha256": "2f949c487fb60c4f7e695d7736d6527cf38bfa2d55a70ac98616a06b2ef06e15"
+    },
+    {
+      "source": "experiments/run_two_environment_suite_20260825.py",
+      "release": "numerical_core.py",
+      "name": "RunOutput",
+      "sha256": "c9baed4bc1d1bfd561d98de14e6eef21b2dcd924cbfb47aee2c3b4b5fd1302bc"
+    },
+    {
+      "source": "experiments/run_two_environment_suite_20260825.py",
+      "release": "numerical_core.py",
+      "name": "sha256_file",
+      "sha256": "6f9eb6169759c26a7c2d97b4bad5c11a63b6637e79903c6fd7e4312941d0bdf3"
+    },
+    {
+      "source": "experiments/run_two_environment_suite_20260825.py",
+      "release": "numerical_core.py",
+      "name": "write_json",
+      "sha256": "23bf79d80951adfe62eea6278e81d52c089fea248f09bb00725d74bea21f0040"
+    },
+    {
+      "source": "experiments/run_two_environment_suite_20260825.py",
+      "release": "numerical_core.py",
+      "name": "write_csv",
+      "sha256": "fb0de7b043e94eeb7bbb6f79021a84a4c8708ed2bd46e5c487e28aa82db254ee"
+    },
+    {
+      "source": "experiments/run_two_environment_suite_20260825.py",
+      "release": "numerical_core.py",
+      "name": "environments",
+      "sha256": "0967e9bfb420527312fadd148aaf617c531d2e619d09c60c8e63e067e95b9f00"
+    },
+    {
+      "source": "experiments/run_two_environment_suite_20260825.py",
+      "release": "numerical_core.py",
+      "name": "generate_trajectory",
+      "sha256": "c08bcf7302208aaa02c75274660cd4c2fc2188ed76adda59235e25d38ae75e50"
+    },
+    {
+      "source": "experiments/run_two_environment_suite_20260825.py",
+      "release": "numerical_core.py",
+      "name": "configs",
+      "sha256": "96aa995a282535fffe1ac066be954a49f53d7079ab9850a0b02ecb298244423f"
+    },
+    {
+      "source": "experiments/run_two_environment_suite_20260825.py",
+      "release": "numerical_core.py",
+      "name": "rmsve",
+      "sha256": "588551fa823aa05f62fe25b1ee34b0619e70f77e4e2444a8442fa5a7ae808463"
+    },
+    {
+      "source": "experiments/run_two_environment_suite_20260825.py",
+      "release": "numerical_core.py",
+      "name": "simulate",
+      "sha256": "8113e84e01751169067dd6b4768ef4a969dd56c211133b428565442806c647ff"
+    },
+    {
+      "source": "experiments/run_two_environment_suite_20260825.py",
+      "release": "numerical_core.py",
+      "name": "config_key",
+      "sha256": "6d9887ef709ebed49e815414abe03360c9c96e6a6459cd9ee98dd713356fea41"
+    },
+    {
+      "source": "experiments/run_two_environment_suite_20260825.py",
+      "release": "numerical_core.py",
+      "name": "select_configs",
+      "sha256": "67ba22285b4bb385a9f613b3636026fd40e5840130fffd269991375ad4155ea5"
+    },
+    {
+      "source": "experiments/run_finite_time_lyapunov_figures_20260825.py",
+      "release": "finite_time_growth.py",
+      "name": "simulate_growth",
+      "sha256": "7db6679d972feeb38db8bc0edc719732b9888bb5b3eaa36eb1467f75242cb9fd"
+    }
+  ],
+  "constants": {
+    "STEPS": 5000,
+    "CURVE_STRIDE": 10,
+    "TAIL_START": 4000,
+    "DIV_THRESHOLD": 1e+100,
+    "METHODS": [
+      "ETD",
+      "RETD",
+      "GTD",
+      "GTD2",
+      "TDC",
+      "TDRC",
+      "TETD"
+    ]
+  },
+  "configuration_copy": {
+    "file": "selected_configs.json",
+    "sha256": "6a077edb4222112828dfcd868eaa45f9fb68f55e4c7c200c40afad94403aadd5",
+    "method": "byte-identical Copy-Item; locked settings are applied separately at runtime"
+  },
+  "changes": [
+    "Extracted scientific function and dataclass source spans unchanged; removed all plotting imports, constants, functions and calls.",
+    "Replaced filesystem-based module loaders with sibling numerical module imports.",
+    "Replaced historical-data and figure-specific entry points with run_locked.py, a new numerical-only CLI.",
+    "New two-state CLI recomputes all seven methods instead of reading frozen five-baseline outputs; same preserved simulator, selected configurations and locked seed range.",
+    "Default locked runs, steps, seed ranges, algorithm parameters and statistic definitions are preserved.",
+    "Explicit custom CLI overrides exist for software checks and are recorded as nonformal runs.",
+    "Original tuning functions remain as APIs; the historical validation/archive orchestration CLIs are not replicated.",
+    "Release metadata contains only upstream package labels and relative paths; historical local absolute paths are not included."
+  ],
+  "verification": {
+    "status": "PASS_SOFTWARE_QA_ONLY",
+    "date": "2026-10-10",
+    "runtime": {
+      "python": "3.12.10",
+      "numpy": "2.3.1"
+    },
+    "preserved_ast_nodes_verified_against_upstream": 14,
+    "default_constants_verified": true,
+    "frozen_configuration_sha256_verified": true,
+    "original_locked_settings_and_seed_ranges_verified": true,
+    "syntax_checked_without_writing_bytecode": true,
+    "plotting_import_and_call_scan": "PASS",
+    "upstream_numeric_equivalence": {
+      "environments": [
+        "new_two_state",
+        "baird_seven_state"
+      ],
+      "methods": [
+        "ETD",
+        "RETD",
+        "GTD",
+        "GTD2",
+        "TDC",
+        "TDRC",
+        "TETD"
+      ],
+      "seeds_per_environment": 10,
+      "transitions_per_seed": 40,
+      "tail_start_inclusive": 32,
+      "stride": 10,
+      "exact_array_comparisons_passed": 210,
+      "includes": [
+        "trajectory equality",
+        "simulate outputs",
+        "simulate_growth outputs",
+        "NaN positions",
+        "12-candidate configuration lists"
+      ],
+      "method": "Executed original scientific ASTs in a minimal isolated numerical namespace; did not import or execute original entry points"
+    },
+    "cli_smoke": {
+      "command": "python q1/run_locked.py --runs 10 --steps 40 --curve-stride 10 --tail-start 32 --output-dir q1/outputs/smoke10",
+      "result": "PASS for both environments and all seven methods",
+      "receipt_protocol_match": false,
+      "classification": "software QA only, not formal experimental evidence",
+      "outputs_excluded_from_version_control": "q1/outputs/"
+    },
+    "reproducible_integrity_command": "python q1/verify_provenance.py",
+    "optional_upstream_integrity_command": "python q1/verify_provenance.py --source-dir <original-experiments-directory>",
+    "full_10000_run_experiment_executed": false,
+    "full_validation_search_executed": false,
+    "full_paper_numerical_replication_claimed": false
+  }
+}

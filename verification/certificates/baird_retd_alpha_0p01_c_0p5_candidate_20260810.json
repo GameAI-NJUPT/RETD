@@ -1,0 +1,37 @@
+{
+  "created_utc": "2026-08-10T13:44:51.658724+00:00",
+  "exact_verifier_settings": {
+    "generalized_eigenvalue_slack": "1/10000000000",
+    "log_series_terms": 48,
+    "p_lower_bound": "3/50",
+    "p_upper_bound": "21"
+  },
+  "fit_script": "jmlr_submission/reproducibility/experiments/freeze_baird_retd_certificate.py",
+  "fit_script_sha256": "bab92fd9907eb749b3ba400bba76e7de55018c5488abad11bde1793d0327be2a",
+  "problem": {
+    "alpha": "1/100",
+    "c": "1/2",
+    "claimed_physical_time_margin": "1/10000",
+    "coordinate": "seven Baird predictions plus omega",
+    "finite_max_run_length": 11,
+    "gamma": "99/100",
+    "method": "RETD",
+    "solid_probability": "1/7"
+  },
+  "quadratic_form": {
+    "lower_lower": "9.245683770562014",
+    "lower_omega": "-9.008824250903285",
+    "omega_omega": "11.073004906486352",
+    "upper_diagonal": "0.7473190564759538",
+    "upper_lower": "-1.4462721104545542",
+    "upper_off_diagonal": "0.13894231222775422",
+    "upper_omega": "1.3688386146118432"
+  },
+  "schema_version": 1,
+  "stage": "fit_output_unverified",
+  "tangent_direction": {
+    "common_upper": "0.3772374",
+    "lower": "0.38224657",
+    "omega": "0.00626418"
+  }
+}
